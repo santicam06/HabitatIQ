@@ -1,0 +1,2061 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-50 text-slate-800">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HabitatIQ Markham</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%232563eb'/%3E%3Cstop offset='50%25' stop-color='%2314b8a6'/%3E%3Cstop offset='100%25' stop-color='%2322c55e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1000' height='1000' rx='300' fill='url(%23g)'/%3E%3Cg transform='translate(212,270) scale(0.9)'%3E%3Cpath fill='%23ffffff' d='M480 48c0-26.5-21.5-48-48-48H336c-26.5 0-48 21.5-48 48V96H224V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V96H112V24c0-13.3-10.7-24-24-24S64 10.7 64 24V96H48C21.5 96 0 117.5 0 144V464c0 26.5 21.5 48 48 48H288 432 592c26.5 0 48-21.5 48-48V240c0-26.5-21.5-48-48-48H480V48zm96 320v32c0 8.8-7.2 16-16 16H528c-8.8 0-16-7.2-16-16V368c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16zM240 416H208c-8.8 0-16-7.2-16-16V368c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16zM128 400c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V368c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32zM560 256c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H528c-8.8 0-16-7.2-16-16V272c0-8.8 7.2-16 16-16h32zM256 176v32c0 8.8-7.2 16-16 16H208c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16zM112 160c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h32zM256 304c0 8.8-7.2 16-16 16H208c-8.8 0-16-7.2-16-16V272c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32zM112 320H80c-8.8 0-16-7.2-16-16V272c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16zm304-48v32c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-16V272c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16zM400 64c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-16V80c0-8.8 7.2-16 16-16h32zm16 112v32c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16z'/%3E%3C/g%3E%3C/svg%3E">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        google: {
+                            blue: '#1a73e8',
+                            red: '#ea4335',
+                            yellow: '#fbbc04',
+                            green: '#34a853',
+                            darkBlue: '#1557b0',
+                            bg: '#f8f9fa'
+                        },
+                        markham: {
+                            primary: '#0f4c81',
+                            accent: '#20b2aa',
+                            light: '#eef6fb',
+                            dark: '#0a2540'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+        // Apply saved or system dark mode preference early to prevent flash
+        if (localStorage.getItem('habitatiq_theme') === 'dark' || (!localStorage.getItem('habitatiq_theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" crossorigin="anonymous"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .tab-btn.active {
+            color: #1a73e8;
+            border-bottom: 3px solid #1a73e8;
+            background-color: #f0f7ff;
+            font-weight: 600;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Inter, system-ui, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.inset-y-0{top:0px;bottom:0px}.-bottom-10{bottom:-2.5rem}.-right-10{right:-2.5rem}.bottom-5{bottom:1.25rem}.left-0{left:0px}.right-5{right:1.25rem}.top-0{top:0px}.left-3{left:0.75rem}.right-3{right:0.75rem}.top-3{top:0.75rem}.z-10{z-index:10}.z-50{z-index:50}.mx-4{margin-left:1rem;margin-right:1rem}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.ml-1{margin-left:0.25rem}.ml-2{margin-left:0.5rem}.mr-1{margin-right:0.25rem}.mr-2{margin-right:0.5rem}.mt-1{margin-top:0.25rem}.mt-12{margin-top:3rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.line-clamp-2{overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-16{height:4rem}.h-2{height:0.5rem}.h-2\.5{height:0.625rem}.h-3{height:0.75rem}.h-48{height:12rem}.h-64{height:16rem}.h-8{height:2rem}.h-\[75vh\]{height:75vh}.h-full{height:100%}.h-44{height:11rem}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-2\.5{width:0.625rem}.w-8{width:2rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-7xl{max-width:80rem}.max-w-md{max-width:28rem}.shrink-0{flex-shrink:0}.flex-grow{flex-grow:1}.translate-y-20{--tw-translate-y:5rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.appearance-none{-webkit-appearance:none;appearance:none}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-x-1 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.25rem * var(--tw-space-x-reverse));margin-left:calc(0.25rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-3 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.divide-y > :not([hidden]) ~ :not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px * calc(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px * var(--tw-divide-y-reverse))}.divide-slate-100 > :not([hidden]) ~ :not([hidden]){--tw-divide-opacity:1;border-color:rgb(241 245 249 / var(--tw-divide-opacity, 1))}.self-center{align-self:center}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.whitespace-nowrap{white-space:nowrap}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-xl{border-radius:0.75rem}.rounded{border-radius:0.25rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-b-2{border-bottom-width:2px}.border-t{border-top-width:1px}.border-amber-200{--tw-border-opacity:1;border-color:rgb(253 230 138 / var(--tw-border-opacity, 1))}.border-blue-100{--tw-border-opacity:1;border-color:rgb(219 234 254 / var(--tw-border-opacity, 1))}.border-blue-200{--tw-border-opacity:1;border-color:rgb(191 219 254 / var(--tw-border-opacity, 1))}.border-blue-400\/30{border-color:rgb(96 165 250 / 0.3)}.border-emerald-200{--tw-border-opacity:1;border-color:rgb(167 243 208 / var(--tw-border-opacity, 1))}.border-indigo-100{--tw-border-opacity:1;border-color:rgb(224 231 255 / var(--tw-border-opacity, 1))}.border-purple-200{--tw-border-opacity:1;border-color:rgb(233 213 255 / var(--tw-border-opacity, 1))}.border-purple-300\/30{border-color:rgb(216 180 254 / 0.3)}.border-purple-400\/30{border-color:rgb(192 132 252 / 0.3)}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249 / var(--tw-border-opacity, 1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240 / var(--tw-border-opacity, 1))}.border-slate-300{--tw-border-opacity:1;border-color:rgb(203 213 225 / var(--tw-border-opacity, 1))}.border-slate-700{--tw-border-opacity:1;border-color:rgb(51 65 85 / var(--tw-border-opacity, 1))}.border-slate-800{--tw-border-opacity:1;border-color:rgb(30 41 59 / var(--tw-border-opacity, 1))}.border-teal-100{--tw-border-opacity:1;border-color:rgb(204 251 241 / var(--tw-border-opacity, 1))}.border-teal-200{--tw-border-opacity:1;border-color:rgb(153 246 228 / var(--tw-border-opacity, 1))}.border-transparent{border-color:transparent}.border-white\/20{border-color:rgb(255 255 255 / 0.2)}.border-red-200{--tw-border-opacity:1;border-color:rgb(254 202 202 / var(--tw-border-opacity, 1))}.bg-blue-100{--tw-bg-opacity:1;background-color:rgb(219 234 254 / var(--tw-bg-opacity, 1))}.bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.bg-blue-500\/20{background-color:rgb(59 130 246 / 0.2)}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.bg-emerald-50{--tw-bg-opacity:1;background-color:rgb(236 253 245 / var(--tw-bg-opacity, 1))}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.bg-indigo-500{--tw-bg-opacity:1;background-color:rgb(99 102 241 / var(--tw-bg-opacity, 1))}.bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(79 70 229 / var(--tw-bg-opacity, 1))}.bg-orange-100{--tw-bg-opacity:1;background-color:rgb(255 237 213 / var(--tw-bg-opacity, 1))}.bg-purple-500\/20{background-color:rgb(168 85 247 / 0.2)}.bg-purple-500\/30{background-color:rgb(168 85 247 / 0.3)}.bg-purple-600{--tw-bg-opacity:1;background-color:rgb(147 51 234 / var(--tw-bg-opacity, 1))}.bg-red-100{--tw-bg-opacity:1;background-color:rgb(254 226 226 / var(--tw-bg-opacity, 1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.bg-slate-50{--tw-bg-opacity:1;background-color:rgb(248 250 252 / var(--tw-bg-opacity, 1))}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-slate-900\/60{background-color:rgb(15 23 42 / 0.6)}.bg-teal-100{--tw-bg-opacity:1;background-color:rgb(204 251 241 / var(--tw-bg-opacity, 1))}.bg-teal-500{--tw-bg-opacity:1;background-color:rgb(20 184 166 / var(--tw-bg-opacity, 1))}.bg-teal-600{--tw-bg-opacity:1;background-color:rgb(13 148 136 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/10{background-color:rgb(255 255 255 / 0.1)}.bg-amber-100{--tw-bg-opacity:1;background-color:rgb(254 243 199 / var(--tw-bg-opacity, 1))}.bg-emerald-100{--tw-bg-opacity:1;background-color:rgb(209 250 229 / var(--tw-bg-opacity, 1))}.bg-red-50{--tw-bg-opacity:1;background-color:rgb(254 242 242 / var(--tw-bg-opacity, 1))}.bg-red-600{--tw-bg-opacity:1;background-color:rgb(220 38 38 / var(--tw-bg-opacity, 1))}.bg-slate-900\/80{background-color:rgb(15 23 42 / 0.8)}.bg-white\/90{background-color:rgb(255 255 255 / 0.9)}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.bg-gradient-to-tr{background-image:linear-gradient(to top right, var(--tw-gradient-stops))}.from-blue-50{--tw-gradient-from:#eff6ff var(--tw-gradient-from-position);--tw-gradient-to:rgb(239 246 255 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-blue-600{--tw-gradient-from:#2563eb var(--tw-gradient-from-position);--tw-gradient-to:rgb(37 99 235 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-indigo-50{--tw-gradient-from:#eef2ff var(--tw-gradient-from-position);--tw-gradient-to:rgb(238 242 255 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-purple-600{--tw-gradient-from:#9333ea var(--tw-gradient-from-position);--tw-gradient-to:rgb(147 51 234 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-slate-900{--tw-gradient-from:#0f172a var(--tw-gradient-from-position);--tw-gradient-to:rgb(15 23 42 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-teal-50{--tw-gradient-from:#f0fdfa var(--tw-gradient-from-position);--tw-gradient-to:rgb(240 253 250 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-blue-900{--tw-gradient-to:rgb(30 58 138 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #1e3a8a var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-blue-950{--tw-gradient-to:rgb(23 37 84 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #172554 var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-teal-500{--tw-gradient-to:rgb(20 184 166 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #14b8a6 var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-blue-600{--tw-gradient-to:#2563eb var(--tw-gradient-to-position)}.to-green-500{--tw-gradient-to:#22c55e var(--tw-gradient-to-position)}.to-purple-900{--tw-gradient-to:#581c87 var(--tw-gradient-to-position)}.to-teal-600{--tw-gradient-to:#0d9488 var(--tw-gradient-to-position)}.to-teal-950{--tw-gradient-to:#042f2e var(--tw-gradient-to-position)}.to-white{--tw-gradient-to:#fff var(--tw-gradient-to-position)}.object-cover{object-fit:cover}.p-2{padding:0.5rem}.p-2\.5{padding:0.625rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.pb-2{padding-bottom:0.5rem}.pb-3{padding-bottom:0.75rem}.pb-6{padding-bottom:1.5rem}.pl-3{padding-left:0.75rem}.pl-8{padding-left:2rem}.pr-4{padding-right:1rem}.pt-2{padding-top:0.5rem}.pt-4{padding-top:1rem}.pt-0{padding-top:0px}.text-left{text-align:left}.text-right{text-align:right}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-9xl{font-size:8rem;line-height:1}.text-\[10px\]{font-size:10px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-\[11px\]{font-size:11px}.font-black{font-weight:900}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.leading-snug{line-height:1.375}.tracking-tight{letter-spacing:-0.025em}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.text-amber-300{--tw-text-opacity:1;color:rgb(252 211 77 / var(--tw-text-opacity, 1))}.text-amber-700{--tw-text-opacity:1;color:rgb(180 83 9 / var(--tw-text-opacity, 1))}.text-blue-200{--tw-text-opacity:1;color:rgb(191 219 254 / var(--tw-text-opacity, 1))}.text-blue-500{--tw-text-opacity:1;color:rgb(59 130 246 / var(--tw-text-opacity, 1))}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-blue-700{--tw-text-opacity:1;color:rgb(29 78 216 / var(--tw-text-opacity, 1))}.text-blue-800{--tw-text-opacity:1;color:rgb(30 64 175 / var(--tw-text-opacity, 1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-emerald-600{--tw-text-opacity:1;color:rgb(5 150 105 / var(--tw-text-opacity, 1))}.text-indigo-500{--tw-text-opacity:1;color:rgb(99 102 241 / var(--tw-text-opacity, 1))}.text-indigo-600{--tw-text-opacity:1;color:rgb(79 70 229 / var(--tw-text-opacity, 1))}.text-orange-600{--tw-text-opacity:1;color:rgb(234 88 12 / var(--tw-text-opacity, 1))}.text-purple-200{--tw-text-opacity:1;color:rgb(233 213 255 / var(--tw-text-opacity, 1))}.text-purple-500{--tw-text-opacity:1;color:rgb(168 85 247 / var(--tw-text-opacity, 1))}.text-purple-700{--tw-text-opacity:1;color:rgb(126 34 206 / var(--tw-text-opacity, 1))}.text-purple-900{--tw-text-opacity:1;color:rgb(88 28 135 / var(--tw-text-opacity, 1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38 / var(--tw-text-opacity, 1))}.text-slate-200{--tw-text-opacity:1;color:rgb(226 232 240 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42 / var(--tw-text-opacity, 1))}.text-teal-300{--tw-text-opacity:1;color:rgb(94 234 212 / var(--tw-text-opacity, 1))}.text-teal-400{--tw-text-opacity:1;color:rgb(45 212 191 / var(--tw-text-opacity, 1))}.text-teal-500{--tw-text-opacity:1;color:rgb(20 184 166 / var(--tw-text-opacity, 1))}.text-teal-600{--tw-text-opacity:1;color:rgb(13 148 136 / var(--tw-text-opacity, 1))}.text-teal-700{--tw-text-opacity:1;color:rgb(15 118 110 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-amber-800{--tw-text-opacity:1;color:rgb(146 64 14 / var(--tw-text-opacity, 1))}.text-emerald-800{--tw-text-opacity:1;color:rgb(6 95 70 / var(--tw-text-opacity, 1))}.text-red-800{--tw-text-opacity:1;color:rgb(153 27 27 / var(--tw-text-opacity, 1))}.accent-blue-600{accent-color:#2563eb}.opacity-0{opacity:0}.opacity-10{opacity:0.1}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.duration-500{transition-duration:500ms}.hover\:bg-amber-50:hover{--tw-bg-opacity:1;background-color:rgb(255 251 235 / var(--tw-bg-opacity, 1))}.hover\:bg-blue-50:hover{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.hover\:bg-blue-500:hover{--tw-bg-opacity:1;background-color:rgb(59 130 246 / var(--tw-bg-opacity, 1))}.hover\:bg-blue-700:hover{--tw-bg-opacity:1;background-color:rgb(29 78 216 / var(--tw-bg-opacity, 1))}.hover\:bg-purple-50:hover{--tw-bg-opacity:1;background-color:rgb(250 245 255 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-200:hover{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.hover\:bg-teal-50:hover{--tw-bg-opacity:1;background-color:rgb(240 253 250 / var(--tw-bg-opacity, 1))}.hover\:bg-white\/20:hover{background-color:rgb(255 255 255 / 0.2)}.hover\:bg-slate-50:hover{--tw-bg-opacity:1;background-color:rgb(248 250 252 / var(--tw-bg-opacity, 1))}.hover\:from-blue-700:hover{--tw-gradient-from:#1d4ed8 var(--tw-gradient-from-position);--tw-gradient-to:rgb(29 78 216 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.hover\:from-purple-700:hover{--tw-gradient-from:#7e22ce var(--tw-gradient-from-position);--tw-gradient-to:rgb(126 34 206 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.hover\:to-blue-700:hover{--tw-gradient-to:#1d4ed8 var(--tw-gradient-to-position)}.hover\:to-teal-700:hover{--tw-gradient-to:#0f766e var(--tw-gradient-to-position)}.hover\:text-blue-600:hover{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.hover\:text-slate-600:hover{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.hover\:text-red-500:hover{--tw-text-opacity:1;color:rgb(239 68 68 / var(--tw-text-opacity, 1))}.hover\:underline:hover{-webkit-text-decoration-line:underline;text-decoration-line:underline}.hover\:shadow-md:hover{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-blue-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(59 130 246 / var(--tw-ring-opacity, 1))}.focus\:ring-indigo-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(99 102 241 / var(--tw-ring-opacity, 1))}.focus\:ring-purple-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(168 85 247 / var(--tw-ring-opacity, 1))}@media (min-width: 640px){.sm\:h-80{height:20rem}.sm\:w-auto{width:auto}.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.sm\:flex-row{flex-direction:row}.sm\:items-center{align-items:center}.sm\:space-x-8 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}.sm\:p-6{padding:1.5rem}.sm\:p-8{padding:2rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}.sm\:text-base{font-size:1rem;line-height:1.5rem}.sm\:text-sm{font-size:0.875rem;line-height:1.25rem}}@media (min-width: 768px){.md\:flex{display:flex}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:items-center{align-items:center}}@media (min-width: 1024px){.lg\:col-span-1{grid-column:span 1 / span 1}.lg\:col-span-2{grid-column:span 2 / span 2}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.lg\:px-8{padding-left:2rem;padding-right:2rem}}</style></head>
+    <style id="dark-mode-styles">
+        /* Dark Mode Theme Overrides */
+        html.dark,
+        html.dark.bg-slate-50,
+        html.dark body {
+            background-color: #0b1120;
+            color: #e2e8f0;
+        }
+        html.dark .glass-panel {
+            background: rgba(15, 23, 42, 0.88);
+            border-color: rgba(51, 65, 85, 0.8);
+        }
+        html.dark .tab-btn.active {
+            color: #60a5fa;
+            border-bottom: 3px solid #3b82f6;
+            background-color: rgba(30, 58, 138, 0.35);
+        }
+        html.dark ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        html.dark ::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+        html.dark ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        /* Surfaces & Backgrounds */
+        html.dark nav.bg-white {
+            background-color: #0f172a;
+        }
+        html.dark .bg-white {
+            background-color: #1e293b;
+        }
+        html.dark .bg-white\/90 {
+            background-color: rgba(30, 41, 59, 0.9);
+        }
+        html.dark .bg-slate-50 {
+            background-color: #0f172a;
+        }
+        html.dark .bg-slate-100 {
+            background-color: #334155;
+        }
+        html.dark .bg-slate-200 {
+            background-color: #334155;
+        }
+        html.dark .hover\:bg-slate-50:hover {
+            background-color: rgba(51, 65, 85, 0.45);
+        }
+        html.dark .hover\:bg-slate-200:hover {
+            background-color: #475569;
+        }
+
+        /* Gradient & Status Surfaces */
+        html.dark .from-blue-50.to-white {
+            background-image: linear-gradient(to bottom right, rgba(30, 58, 138, 0.35), #1e293b);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        html.dark .from-teal-50.to-white {
+            background-image: linear-gradient(to bottom right, rgba(19, 78, 74, 0.35), #1e293b);
+            border-color: rgba(20, 184, 166, 0.3);
+        }
+        html.dark .from-indigo-50.to-white {
+            background-image: linear-gradient(to bottom right, rgba(49, 46, 129, 0.35), #1e293b);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+        html.dark .bg-blue-50 {
+            background-color: rgba(30, 58, 138, 0.3);
+        }
+        html.dark .bg-red-50 {
+            background-color: rgba(127, 29, 29, 0.28);
+        }
+        html.dark .bg-amber-50 {
+            background-color: rgba(120, 53, 15, 0.28);
+        }
+        html.dark .bg-emerald-50 {
+            background-color: rgba(6, 78, 59, 0.28);
+        }
+
+        /* Badges & Accents */
+        html.dark .bg-blue-100 {
+            background-color: rgba(37, 99, 235, 0.22);
+            color: #93c5fd;
+        }
+        html.dark .bg-red-100 {
+            background-color: rgba(239, 68, 68, 0.22);
+            color: #fca5a5;
+        }
+        html.dark .bg-orange-100 {
+            background-color: rgba(249, 115, 22, 0.22);
+            color: #fdba74;
+        }
+        html.dark .bg-teal-100 {
+            background-color: rgba(20, 184, 166, 0.22);
+            color: #5eead4;
+        }
+        html.dark .bg-amber-100 {
+            background-color: rgba(245, 158, 11, 0.22);
+            color: #fde68a;
+        }
+        html.dark .bg-emerald-100 {
+            background-color: rgba(16, 185, 129, 0.22);
+            color: #6ee7b7;
+        }
+        html.dark .hover\:bg-blue-50:hover {
+            background-color: rgba(30, 58, 138, 0.4);
+        }
+        html.dark .hover\:bg-teal-50:hover {
+            background-color: rgba(19, 78, 74, 0.4);
+        }
+        html.dark .hover\:bg-purple-50:hover {
+            background-color: rgba(88, 28, 135, 0.4);
+        }
+        html.dark .hover\:bg-amber-50:hover {
+            background-color: rgba(120, 53, 15, 0.4);
+        }
+
+        /* Typography */
+        html.dark .text-slate-900 {
+            color: #f8fafc;
+        }
+        html.dark .text-slate-800 {
+            color: #f1f5f9;
+        }
+        html.dark .text-slate-700 {
+            color: #cbd5e1;
+        }
+        html.dark .text-slate-600 {
+            color: #94a3b8;
+        }
+        html.dark .text-slate-500 {
+            color: #94a3b8;
+        }
+        html.dark .text-slate-400 {
+            color: #64748b;
+        }
+        html.dark .text-blue-800 {
+            color: #93c5fd;
+        }
+        html.dark .text-blue-700,
+        html.dark .text-blue-600 {
+            color: #60a5fa;
+        }
+        html.dark .text-teal-700,
+        html.dark .text-teal-600 {
+            color: #2dd4bf;
+        }
+        html.dark .text-indigo-600 {
+            color: #818cf8;
+        }
+        html.dark .text-purple-900 {
+            color: #d8b4fe;
+        }
+        html.dark .text-purple-700 {
+            color: #c084fc;
+        }
+        html.dark .text-amber-800 {
+            color: #fde68a;
+        }
+        html.dark .text-amber-700 {
+            color: #fbbf24;
+        }
+        html.dark .text-red-800 {
+            color: #fca5a5;
+        }
+        html.dark .text-red-600 {
+            color: #f87171;
+        }
+        html.dark .text-orange-600 {
+            color: #fb923c;
+        }
+        html.dark .text-emerald-800 {
+            color: #6ee7b7;
+        }
+        html.dark .text-emerald-600 {
+            color: #34d399;
+        }
+
+        /* Borders & Dividers */
+        html.dark .border-slate-100 {
+            border-color: #1e293b;
+        }
+        html.dark .border-slate-200 {
+            border-color: #334155;
+        }
+        html.dark .border-slate-300 {
+            border-color: #475569;
+        }
+        html.dark .border-blue-100,
+        html.dark .border-blue-200 {
+            border-color: rgba(59, 130, 246, 0.35);
+        }
+        html.dark .border-teal-100,
+        html.dark .border-teal-200 {
+            border-color: rgba(20, 184, 166, 0.35);
+        }
+        html.dark .border-indigo-100 {
+            border-color: rgba(99, 102, 241, 0.35);
+        }
+        html.dark .border-purple-200 {
+            border-color: rgba(168, 85, 247, 0.35);
+        }
+        html.dark .border-amber-200 {
+            border-color: rgba(245, 158, 11, 0.35);
+        }
+        html.dark .border-red-200 {
+            border-color: rgba(239, 68, 68, 0.4);
+        }
+        html.dark .border-emerald-200 {
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+        html.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]) {
+            border-color: #334155;
+        }
+
+        /* Form Inputs & Selects */
+        html.dark input[type="number"],
+        html.dark input[type="text"],
+        html.dark select {
+            background-color: #1e293b;
+            color: #f8fafc;
+            border-color: #475569;
+            color-scheme: dark;
+        }
+        html.dark input::placeholder {
+            color: #64748b;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen transition-colors duration-200">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 glass-panel shadow-sm border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand Title -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-teal-500 to-green-500 flex items-center justify-center text-white shadow-md">
+                        <i class="fa-solid fa-city text-lg"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span class="font-extrabold text-xl text-slate-900 tracking-tight">Habitat<span class="text-blue-600">IQ</span></span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-0.5 rounded-full border border-blue-200">Markham</span>
+                        </div>
+                        <p class="text-xs text-slate-500 font-medium">Google Hackathon • Accessible Housing Solutions</p>
+                    </div>
+                </div>
+
+                <!-- Profile / Quick User Income Config -->
+                <div class="flex items-center space-x-3 sm:space-x-4">
+                    <div class="hidden md:flex items-center bg-slate-100 rounded-lg px-3 py-1.5 border border-slate-200">
+                        <i class="fa-solid fa-wallet text-blue-600 mr-2 text-sm"></i>
+                        <span class="text-xs text-slate-500 font-medium mr-2">Monthly Income:</span>
+                        <span id="headerIncomeDisplay" class="text-sm font-bold text-slate-800">$4,200</span>
+                        <button onclick="openIncomeModal()" class="ml-2 text-xs text-blue-600 hover:underline font-semibold">(Edit)</button>
+                    </div>
+
+                    <button id="themeToggleBtn" onclick="toggleDarkMode()" title="Toggle Dark Mode" aria-label="Toggle Dark Mode" class="w-9 h-9 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center text-slate-600 transition">
+                        <i id="themeToggleIcon" class="fa-solid fa-moon text-sm"></i>
+                    </button>
+
+                    <a href="#ai-navigator" onclick="switchTab('ai-navigator')" class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white text-xs font-bold px-3 py-2 rounded-lg shadow-sm flex items-center space-x-1 transition">
+                        <i class="fa-solid fa-sparkles text-amber-300"></i>
+                        <span>Ask Gemini AI</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="bg-white border-t border-slate-100 px-4 sm:px-6 lg:px-8 overflow-x-auto">
+            <div class="max-w-7xl mx-auto flex space-x-2 sm:space-x-8">
+                <button onclick="switchTab('dashboard')" id="tab-dashboard" class="tab-btn active py-3 px-3 text-xs sm:text-sm text-slate-600 border-b-2 border-transparent hover:text-blue-600 flex items-center space-x-2 whitespace-nowrap transition">
+                    <i class="fa-solid fa-chart-line text-blue-500"></i>
+                    <span>Markham Crisis Dashboard</span>
+                </button>
+                <button onclick="switchTab('calculator')" id="tab-calculator" class="tab-btn py-3 px-3 text-xs sm:text-sm text-slate-600 border-b-2 border-transparent hover:text-blue-600 flex items-center space-x-2 whitespace-nowrap transition">
+                    <i class="fa-solid fa-calculator text-teal-500"></i>
+                    <span>Rent &amp; Commute True-Cost</span>
+                </button>
+                <button onclick="switchTab('discovery')" id="tab-discovery" class="tab-btn py-3 px-3 text-xs sm:text-sm text-slate-600 border-b-2 border-transparent hover:text-blue-600 flex items-center space-x-2 whitespace-nowrap transition">
+                    <i class="fa-solid fa-magnifying-glass-location text-indigo-500"></i>
+                    <span>Housing Discovery</span>
+                </button>
+                <button onclick="switchTab('ai-navigator')" id="tab-ai-navigator" class="tab-btn py-3 px-3 text-xs sm:text-sm text-slate-600 border-b-2 border-transparent hover:text-blue-600 flex items-center space-x-2 whitespace-nowrap transition">
+                    <i class="fa-solid fa-robot text-purple-500"></i>
+                    <span>Gemini AI Resource Navigator</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- ========================================== -->
+        <!-- TAB 1: MARKHAM CRISIS & IMPACT DASHBOARD -->
+        <!-- ========================================== -->
+        <section id="content-dashboard" class="space-y-6">
+            
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-teal-950 text-white rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl text-white font-black">MARKHAM</div>
+                <div class="max-w-3xl relative z-10 space-y-4">
+                    <div class="inline-flex items-center space-x-2 bg-blue-500/20 backdrop-blur-md border border-blue-400/30 text-blue-200 text-xs font-semibold px-3 py-1 rounded-full">
+                        <i class="fa-solid fa-bullseye text-teal-400"></i>
+                        <span>Hackathon Problem Focus: Making Housing Accessible</span>
+                    </div>
+                    <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+                        Unlocking True Affordability in Markham, Ontario
+                    </h1>
+                    <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+                        Housing affordability isn't just about base rent. For students, young professionals, and families in York Region, hidden commute times, transit fares, and utilities turn "affordable" homes into severe financial burdens.
+                    </p>
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <button onclick="switchTab('calculator')" class="bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl shadow-md transition flex items-center space-x-2">
+                            <span>Calculate Your True Cost</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <button onclick="switchTab('ai-navigator')" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl backdrop-blur-md transition flex items-center space-x-2">
+                            <i class="fa-solid fa-handshake-angle text-teal-300"></i>
+                            <span>Explore York Subsidies</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Hackathon Impact Counters -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Housing Stress</span>
+                        <div class="w-8 h-8 rounded-lg bg-red-100 text-red-600 flex items-center justify-center">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <span class="text-3xl font-extrabold text-slate-900">33.3%</span>
+                        <span class="text-xs font-semibold text-red-600 ml-1">1 in 3 households</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2">In Markham face housing affordability challenges, spending &gt;30% on rent.</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Severe Burden</span>
+                        <div class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center">
+                            <i class="fa-solid fa-house-crack"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <span class="text-3xl font-extrabold text-slate-900">18.5%</span>
+                        <span class="text-xs font-semibold text-orange-600 ml-1">Nearly 1 in 5</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2">Spend at least <strong class="text-slate-700">50% of monthly income</strong> on housing shelter costs alone.</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Median 1-Bed Rent</span>
+                        <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <span class="text-3xl font-extrabold text-slate-900">$2,150</span>
+                        <span class="text-xs font-semibold text-slate-500 ml-1">/ month</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2">Requires ~$86k annual gross salary to satisfy standard 30% affordability rule.</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Avg Commute Tax</span>
+                        <div class="w-8 h-8 rounded-lg bg-teal-100 text-teal-600 flex items-center justify-center">
+                            <i class="fa-solid fa-bus-simple"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <span class="text-3xl font-extrabold text-slate-900">$340</span>
+                        <span class="text-xs font-semibold text-teal-600 ml-1">/ mo hidden</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2">GO Transit / YRT fares &amp; parking hidden expenses added to distant lower-rent units.</p>
+                </div>
+            </div>
+
+            <!-- Visual Analytics Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Markham Neighborhood True-Cost Comparison -->
+                <div class="lg:col-span-2 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                        <div>
+                            <h3 class="text-base font-bold text-slate-900">Markham Neighborhood Living Cost Breakdown</h3>
+                            <p class="text-xs text-slate-500">Base Rent vs Commute Fares vs Utilities (1-Bed / Studio Average)</p>
+                        </div>
+                        <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full font-medium">Updated 2026</span>
+                    </div>
+                    <div class="h-64 sm:h-80 relative">
+                        <canvas id="neighborhoodChart" width="868" height="440" style="display: block; box-sizing: border-box; height: 320px; width: 631.3px;"></canvas>
+                    </div>
+                </div>
+
+                <!-- Budget Burden Doughnut & Live Persona Gauge -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-base font-bold text-slate-900">Markham Market Affordability</h3>
+                            <i class="fa-solid fa-chart-pie text-slate-400"></i>
+                        </div>
+                        <div class="h-48 relative flex items-center justify-center">
+                            <canvas id="burdenChart" width="868" height="264" style="display: block; box-sizing: border-box; height: 192px; width: 631.3px;"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Policy Simulator Widget -->
+                    <div class="mt-6 pt-4 border-t border-slate-100 space-y-3">
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="font-bold text-slate-700">Simulate One Fare Subsidy:</span>
+                            <span id="subsidyValDisplay" class="font-bold text-blue-600">$120/mo Savings</span>
+                        </div>
+                        <input type="range" id="subsidySlider" min="0" max="250" value="120" step="10" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600" oninput="updateSubsidySim(this.value)">
+                        <p class="text-xs text-slate-500 italic">
+                            Ontario's One Fare Program allows free transfers between YRT and GO Transit, reducing total commute costs for Markham commuters.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problem / Solution Overview Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gradient-to-br from-blue-50 to-white p-6 rounded-2xl border border-blue-100 shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg mb-4">1</div>
+                    <h4 class="font-bold text-slate-900 mb-2">The Commute Trap</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Moving further east to Cornell or Markham Village saves $250/mo on rent, but adds $320/mo in GO Transit fares to Downtown Toronto or York University, increasing total spending.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-teal-50 to-white p-6 rounded-2xl border border-teal-100 shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center font-bold text-lg mb-4">2</div>
+                    <h4 class="font-bold text-slate-900 mb-2">Information Fragmentation</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Housing York Inc. subsidies, York Region Rent Assistance (RAP), tenant rights, and student co-living resources are buried across multiple municipal PDF documents.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-2xl border border-indigo-100 shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-lg mb-4">3</div>
+                    <h4 class="font-bold text-slate-900 mb-2">HabitatIQ Solution</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        HabitatIQ combines full commute calculations with AI-guided navigation to help students, tech workers, and families find housing that fits their actual paycheck.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- TAB 2: RENT & COMMUTE TRUE-COST CALCULATOR -->
+        <!-- ========================================== -->
+        <section id="content-calculator" class="hidden space-y-6">
+            
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 flex items-center space-x-2">
+                            <i class="fa-solid fa-calculator text-teal-600"></i>
+                            <span>True-Cost Housing &amp; Commute Calculator</span>
+                        </h2>
+                        <p class="text-xs text-slate-500 mt-1">Calculate base rent + transit + utilities against the 30% affordability threshold.</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs text-slate-500">Preset Scenarios:</span>
+                        <button onclick="setScenario('student')" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg font-semibold text-slate-700 transition">York U Student</button>
+                        <button onclick="setScenario('tech')" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg font-semibold text-slate-700 transition">Markham Tech Pro</button>
+                        <button onclick="setScenario('family')" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg font-semibold text-slate-700 transition">Newcomer Family</button>
+                    </div>
+                </div>
+
+                <!-- Inputs Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-6">
+                    
+                    <!-- Left Column: User Inputs -->
+                    <div class="space-y-5 lg:col-span-1 bg-slate-50 p-5 rounded-xl border border-slate-200">
+                        <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider text-xs border-b border-slate-200 pb-2">1. Your Profile &amp; Income</h3>
+                        
+                        <!-- Net Monthly Income -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Monthly Income (After Tax)</label>
+                            <div class="relative rounded-lg shadow-sm">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <span class="text-slate-400 text-sm">$</span>
+                                </div>
+                                <input type="number" id="calcIncomeInput" value="4200" step="100" class="w-full pl-8 pr-4 py-2 bg-white border border-slate-300 rounded-lg text-sm font-bold text-slate-900 focus:ring-2 focus:ring-blue-500 focus:outline-none" oninput="runCalculator()">
+                            </div>
+                        </div>
+
+                        <!-- Preferred Destination -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Primary Commute Destination</label>
+                            <select id="calcDestination" class="w-full p-2.5 bg-white border border-slate-300 rounded-lg text-xs font-medium text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none" onchange="runCalculator()">
+                                <option value="union">Union Station (Downtown Toronto Financial District)</option>
+                                <option value="york_keele">York University (Keele Campus)</option>
+                                <option value="york_markham">York University (Markham Campus - Downtown Markham)</option>
+                                <option value="markham_tech">Markham Tech Hub (Allstate Pkwy / Hwy 7 Corridor)</option>
+                                <option value="seneca">Seneca Polytechnic (Newnham Campus)</option>
+                            </select>
+                        </div>
+
+                        <!-- Commute Mode -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Preferred Commute Mode</label>
+                            <select id="calcTransitMode" class="w-full p-2.5 bg-white border border-slate-300 rounded-lg text-xs font-medium text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none" onchange="runCalculator()">
+                                <option value="go_yrt">GO Transit + YRT Bus (Ontario One Fare Discount)</option>
+                                <option value="yrt_only">YRT / VIVA Bus Local Transit</option>
+                                <option value="driving">Driving (Gas + Insurance + Parking)</option>
+                                <option value="walking_cycling">Walking / Cycling / Hybrid</option>
+                            </select>
+                        </div>
+
+                        <!-- Household Setup -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Housing Type Needed</label>
+                            <select id="calcHousingType" class="w-full p-2.5 bg-white border border-slate-300 rounded-lg text-xs font-medium text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none" onchange="runCalculator()">
+                                <option value="shared">Shared Room / Co-living ($850 - $1,100)</option>
+                                <option value="basement">Basement Suite 1-2 Bed ($1,450 - $1,800)</option>
+                                <option value="condo_1b" selected="">1-Bedroom Condo ($1,950 - $2,250)</option>
+                                <option value="townhouse_2b">2-3 Bedroom Townhouse / Family ($2,600 - $3,200)</option>
+                            </select>
+                        </div>
+
+                        <!-- Preferred Markham Neighborhood -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Select Neighborhood Focus</label>
+                            <select id="calcNeighborhood" class="w-full p-2.5 bg-white border border-slate-300 rounded-lg text-xs font-medium text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none" onchange="runCalculator()">
+                                <option value="downtown_markham">Downtown Markham / Markham Centre</option>
+                                <option value="unionville">Unionville (Historic Core)</option>
+                                <option value="cornell">Cornell (East Markham)</option>
+                                <option value="milliken">Milliken (South Markham / Steeles)</option>
+                                <option value="thornhill">Thornhill (West Markham)</option>
+                                <option value="markham_village">Markham Village / Main St</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Results & True Cost Analysis -->
+                    <div class="lg:col-span-2 space-y-6">
+                        
+                        <!-- Status Banner Gauge -->
+                        <div id="affordabilityCard" class="p-6 rounded-2xl border transition-all duration-300 bg-red-50 border-red-200">
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                                <div>
+                                    <div class="flex items-center space-x-2">
+                                        <span id="affordabilityBadge" class="px-2.5 py-1 bg-red-600 text-white text-xs font-extrabold rounded-md uppercase tracking-wide">Severe Burden (&gt;50%)</span>
+                                        <span class="text-xs text-slate-500 font-medium">Standard HUD Benchmark</span>
+                                    </div>
+                                    <h3 id="affordabilityHeadline" class="text-xl font-extrabold text-slate-900 mt-2">Warning: Severe housing cost burden detected!</h3>
+                                    <p id="affordabilitySubtext" class="text-xs text-slate-600 mt-1">Spending &gt;50% of your paycheck leaves insufficient funds for groceries, healthcare, and savings.</p>
+                                </div>
+                                <div class="text-right bg-white px-4 py-3 rounded-xl border border-slate-200 shadow-sm w-full sm:w-auto">
+                                    <div class="text-xs text-slate-500 font-medium">True Housing Burden</div>
+                                    <div id="ratioDisplay" class="text-3xl font-extrabold text-red-600">57.1%</div>
+                                    <div class="text-xs text-slate-400">of net paycheck</div>
+                                </div>
+                            </div>
+
+                            <!-- Visual Budget Bar -->
+                            <div class="mt-4">
+                                <div class="flex justify-between text-xs font-semibold text-slate-600 mb-1">
+                                    <span>Income Allocation ($<span id="incomeValText">4,200</span>)</span>
+                                    <span>Safe Threshold: $<span id="safeThresholdText">1,260</span> (30%)</span>
+                                </div>
+                                <div class="w-full bg-slate-200 rounded-full h-3 overflow-hidden flex">
+                                    <div id="barRent" class="bg-blue-600 h-full transition-all duration-500" style="width: 51.1905%;" title="Base Rent"></div>
+                                    <div id="barTransit" class="bg-teal-500 h-full transition-all duration-500" style="width: 2.14286%;" title="Commute Fares"></div>
+                                    <div id="barUtilities" class="bg-indigo-500 h-full transition-all duration-500" style="width: 3.80952%;" title="Utilities &amp; Net"></div>
+                                </div>
+                                <div class="flex text-xs space-x-4 mt-2">
+                                    <div class="flex items-center space-x-1"><span class="w-2.5 h-2.5 rounded-full bg-blue-600 inline-block"></span><span class="text-slate-600">Base Rent</span></div>
+                                    <div class="flex items-center space-x-1"><span class="w-2.5 h-2.5 rounded-full bg-teal-500 inline-block"></span><span class="text-slate-600">Commute</span></div>
+                                    <div class="flex items-center space-x-1"><span class="w-2.5 h-2.5 rounded-full bg-indigo-500 inline-block"></span><span class="text-slate-600">Utilities</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- True Monthly Breakdown Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                                <span class="text-xs text-slate-500 font-medium block">Base Rent</span>
+                                <span id="calcBaseRent" class="text-xl font-bold text-slate-900">$2,150</span>
+                                <span class="text-xs text-slate-400 block mt-1">Est. Neighborhood Rent</span>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                                <span class="text-xs text-slate-500 font-medium block">Commute Costs</span>
+                                <span id="calcCommuteCost" class="text-xl font-bold text-teal-600">$90</span>
+                                <span class="text-xs text-teal-600 block mt-1" id="calcCommuteDetail">GO Transit + Free YRT Transfer</span>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                                <span class="text-xs text-slate-500 font-medium block">Utilities &amp; Net</span>
+                                <span id="calcUtilities" class="text-xl font-bold text-indigo-600">$160</span>
+                                <span class="text-xs text-slate-400 block mt-1">Hydro, Heating, Internet</span>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-xl border border-blue-200">
+                                <span class="text-xs text-blue-800 font-bold block">True Living Cost</span>
+                                <span id="calcTotalTrueCost" class="text-2xl font-extrabold text-blue-700">$2,400</span>
+                                <span class="text-xs text-blue-600 block mt-1 font-semibold">Total Monthly Outflow</span>
+                            </div>
+                        </div>
+
+                        <!-- All Neighborhoods Comparative Matrix -->
+                        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                            <div class="px-5 py-3 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+                                <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider">All Markham Neighborhoods - True Cost Matrix</h4>
+                                <span class="text-xs text-slate-500">Target: <strong id="matrixTargetText" class="text-slate-800">Union Station</strong></span>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left text-xs">
+                                    <thead class="bg-slate-100 text-slate-600 border-b border-slate-200">
+                                        <tr>
+                                            <th class="p-3">Neighborhood</th>
+                                            <th class="p-3">Est. Rent</th>
+                                            <th class="p-3">Commute Fare</th>
+                                            <th class="p-3">True Cost</th>
+                                            <th class="p-3">% of Your Income</th>
+                                            <th class="p-3">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="matrixTableBody" class="divide-y divide-slate-100 text-slate-800">
+                    <tr class="hover:bg-slate-50">
+                        <td class="p-3 font-bold text-slate-900">Downtown Markham</td>
+                        <td class="p-3">$2,150</td>
+                        <td class="p-3 text-teal-600 font-semibold">$210</td>
+                        <td class="p-3 font-extrabold text-blue-700">$2,520</td>
+                        <td class="p-3 font-bold">60.0%</td>
+                        <td class="p-3"><span class="bg-red-100 text-red-800 font-bold px-2 py-0.5 rounded">Severe Burden</span></td>
+                    </tr>
+                
+                    <tr class="hover:bg-slate-50">
+                        <td class="p-3 font-bold text-slate-900">Unionville</td>
+                        <td class="p-3">$2,100</td>
+                        <td class="p-3 text-teal-600 font-semibold">$210</td>
+                        <td class="p-3 font-extrabold text-blue-700">$2,465</td>
+                        <td class="p-3 font-bold">58.7%</td>
+                        <td class="p-3"><span class="bg-red-100 text-red-800 font-bold px-2 py-0.5 rounded">Severe Burden</span></td>
+                    </tr>
+                
+                    <tr class="hover:bg-slate-50">
+                        <td class="p-3 font-bold text-slate-900">Cornell</td>
+                        <td class="p-3">$1,850</td>
+                        <td class="p-3 text-teal-600 font-semibold">$240</td>
+                        <td class="p-3 font-extrabold text-blue-700">$2,260</td>
+                        <td class="p-3 font-bold">53.8%</td>
+                        <td class="p-3"><span class="bg-red-100 text-red-800 font-bold px-2 py-0.5 rounded">Severe Burden</span></td>
+                    </tr>
+                
+                    <tr class="hover:bg-slate-50">
+                        <td class="p-3 font-bold text-slate-900">Milliken</td>
+                        <td class="p-3">$1,750</td>
+                        <td class="p-3 text-teal-600 font-semibold">$185</td>
+                        <td class="p-3 font-extrabold text-blue-700">$2,085</td>
+                        <td class="p-3 font-bold">49.6%</td>
+                        <td class="p-3"><span class="bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded">Moderate</span></td>
+                    </tr>
+                
+                    <tr class="hover:bg-slate-50">
+                        <td class="p-3 font-bold text-slate-900">Thornhill</td>
+                        <td class="p-3">$1,950</td>
+                        <td class="p-3 text-teal-600 font-semibold">$195</td>
+                        <td class="p-3 font-extrabold text-blue-700">$2,310</td>
+                        <td class="p-3 font-bold">55.0%</td>
+                        <td class="p-3"><span class="bg-red-100 text-red-800 font-bold px-2 py-0.5 rounded">Severe Burden</span></td>
+                    </tr>
+                
+                    <tr class="hover:bg-slate-50">
+                        <td class="p-3 font-bold text-slate-900">Markham Village</td>
+                        <td class="p-3">$1,900</td>
+                        <td class="p-3 text-teal-600 font-semibold">$225</td>
+                        <td class="p-3 font-extrabold text-blue-700">$2,285</td>
+                        <td class="p-3 font-bold">54.4%</td>
+                        <td class="p-3"><span class="bg-red-100 text-red-800 font-bold px-2 py-0.5 rounded">Severe Burden</span></td>
+                    </tr>
+                </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- TAB 3: AFFORDABLE HOUSING DISCOVERY -->
+        <!-- ========================================== -->
+        <section id="content-discovery" class="hidden space-y-6">
+            
+            <!-- Discovery Header & Dynamic Filters -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 flex items-center space-x-2">
+                            <i class="fa-solid fa-magnifying-glass-location text-indigo-600"></i>
+                            <span>Markham Smart Housing Discovery</span>
+                        </h2>
+                        <p class="text-xs text-slate-500 mt-1">Verified listings sorted by True Living Cost, GO Transit walking distance, and student/family suitability.</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs text-slate-500">Saved Units:</span>
+                        <span id="savedCountBadge" class="bg-blue-100 text-blue-800 font-bold text-xs px-2.5 py-1 rounded-full border border-blue-200">0 Items</span>
+                    </div>
+                </div>
+
+                <!-- Filter Control Bar -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 pt-2">
+                    <!-- Max Rent Filter -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Max Base Budget</label>
+                        <select id="filterMaxBudget" class="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg text-xs font-medium text-slate-800 focus:ring-2 focus:ring-indigo-500" onchange="renderListings()">
+                            <option value="9999" selected="">Any Price</option>
+                            <option value="1000">Under $1,000 / mo</option>
+                            <option value="1800">Under $1,800 / mo</option>
+                            <option value="2200">Under $2,200 / mo</option>
+                            <option value="2800">Under $2,800 / mo</option>
+                        </select>
+                    </div>
+
+                    <!-- Room Type Filter -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Room / Dwelling Type</label>
+                        <select id="filterRoomType" class="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg text-xs font-medium text-slate-800 focus:ring-2 focus:ring-indigo-500" onchange="renderListings()">
+                            <option value="all">All Room Types</option>
+                            <option value="shared">Shared / Co-living</option>
+                            <option value="basement">Basement Suite</option>
+                            <option value="condo">Condo / Apartment</option>
+                            <option value="townhouse">Townhouse / Family</option>
+                        </select>
+                    </div>
+
+                    <!-- Transit Proximity Filter -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">GO Transit Walk Time</label>
+                        <select id="filterTransitWalk" class="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg text-xs font-medium text-slate-800 focus:ring-2 focus:ring-indigo-500" onchange="renderListings()">
+                            <option value="999">Any Distance</option>
+                            <option value="5">&lt; 5 min Walk to Station</option>
+                            <option value="12">&lt; 12 min Walk to Station</option>
+                        </select>
+                    </div>
+
+                    <!-- Suitable For Filter -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Target Persona</label>
+                        <select id="filterSuitability" class="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg text-xs font-medium text-slate-800 focus:ring-2 focus:ring-indigo-500" onchange="renderListings()">
+                            <option value="all">All Households</option>
+                            <option value="student">Student Friendly</option>
+                            <option value="tech">Young Professional / Tech</option>
+                            <option value="family">Family Friendly</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listings Container Grid -->
+            <div id="listingsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <div class="relative h-44 bg-slate-100 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Modern Student Co-Living Suite near York U Markham" class="w-full h-full object-cover">
+                                <div class="absolute top-3 left-3 flex gap-2">
+                                    <span class="bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Downtown Markham</span>
+                                    <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">27.9% Income Fit</span>
+                                </div>
+                                <button onclick="toggleSaveListing('m-101')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-slate-600 hover:text-red-500 shadow-sm transition">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="p-5 space-y-3">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="font-bold text-slate-900 text-sm leading-snug">Modern Student Co-Living Suite near York U Markham</h3>
+                                </div>
+                                <p class="text-xs text-slate-500 line-clamp-2">Private furnished room in high-rise condo. High-speed fiber internet included. Walk to new York U Markham Campus.</p>
+                                
+                                <div class="grid grid-cols-2 gap-2 text-[11px] bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                                    <div>
+                                        <span class="text-slate-400 block">Base Rent</span>
+                                        <span class="font-bold text-slate-800 text-sm">$950/mo</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-400 block">Est. True Cost</span>
+                                        <span class="font-extrabold text-blue-600 text-sm">$1170/mo</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center space-x-2 text-xs text-slate-600">
+                                    <i class="fa-solid fa-person-walking-luggage text-teal-600"></i>
+                                    <span><strong>5 min walk</strong> to Unionville GO &amp; VIVA Next BRT</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-5 pt-0 flex gap-2">
+                            <button onclick="calcListingFit(950)" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-2 rounded-xl transition">
+                                Test in Calculator
+                            </button>
+                        </div>
+                    </div>
+                
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <div class="relative h-44 bg-slate-100 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Bright 1-Bed Condo at Enterprise Blvd" class="w-full h-full object-cover">
+                                <div class="absolute top-3 left-3 flex gap-2">
+                                    <span class="bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Downtown Markham</span>
+                                    <span class="bg-red-100 text-red-800 text-[10px] font-bold px-2 py-0.5 rounded-full">56.2% High Burden</span>
+                                </div>
+                                <button onclick="toggleSaveListing('m-102')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-slate-600 hover:text-red-500 shadow-sm transition">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="p-5 space-y-3">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="font-bold text-slate-900 text-sm leading-snug">Bright 1-Bed Condo at Enterprise Blvd</h3>
+                                </div>
+                                <p class="text-xs text-slate-500 line-clamp-2">Includes underground parking and storage locker. Minutes to IBM, AMD, and tech head offices.</p>
+                                
+                                <div class="grid grid-cols-2 gap-2 text-[11px] bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                                    <div>
+                                        <span class="text-slate-400 block">Base Rent</span>
+                                        <span class="font-bold text-slate-800 text-sm">$2050/mo</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-400 block">Est. True Cost</span>
+                                        <span class="font-extrabold text-blue-600 text-sm">$2360/mo</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center space-x-2 text-xs text-slate-600">
+                                    <i class="fa-solid fa-person-walking-luggage text-teal-600"></i>
+                                    <span><strong>7 min walk</strong> to Unionville GO / Hwy 7 Busway</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-5 pt-0 flex gap-2">
+                            <button onclick="calcListingFit(2050)" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-2 rounded-xl transition">
+                                Test in Calculator
+                            </button>
+                        </div>
+                    </div>
+                
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <div class="relative h-44 bg-slate-100 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="2-Bedroom Sunlit Basement Suite in Cornell" class="w-full h-full object-cover">
+                                <div class="absolute top-3 left-3 flex gap-2">
+                                    <span class="bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Cornell</span>
+                                    <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">46.4% Income Fit</span>
+                                </div>
+                                <button onclick="toggleSaveListing('m-103')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-slate-600 hover:text-red-500 shadow-sm transition">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="p-5 space-y-3">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="font-bold text-slate-900 text-sm leading-snug">2-Bedroom Sunlit Basement Suite in Cornell</h3>
+                                </div>
+                                <p class="text-xs text-slate-500 line-clamp-2">Legal egress windows, separate side entrance, private washer/dryer. Close to Markham Stouffville Hospital.</p>
+                                
+                                <div class="grid grid-cols-2 gap-2 text-[11px] bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                                    <div>
+                                        <span class="text-slate-400 block">Base Rent</span>
+                                        <span class="font-bold text-slate-800 text-sm">$1650/mo</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-400 block">Est. True Cost</span>
+                                        <span class="font-extrabold text-blue-600 text-sm">$1950/mo</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center space-x-2 text-xs text-slate-600">
+                                    <i class="fa-solid fa-person-walking-luggage text-teal-600"></i>
+                                    <span><strong>18 min walk</strong> to YRT Cornell Terminal Bus #1</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-5 pt-0 flex gap-2">
+                            <button onclick="calcListingFit(1650)" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-2 rounded-xl transition">
+                                Test in Calculator
+                            </button>
+                        </div>
+                    </div>
+                
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <div class="relative h-44 bg-slate-100 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="3-Bed Family Townhouse near Mount Joy GO" class="w-full h-full object-cover">
+                                <div class="absolute top-3 left-3 flex gap-2">
+                                    <span class="bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Markham Village</span>
+                                    <span class="bg-red-100 text-red-800 text-[10px] font-bold px-2 py-0.5 rounded-full">74.5% High Burden</span>
+                                </div>
+                                <button onclick="toggleSaveListing('m-104')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-slate-600 hover:text-red-500 shadow-sm transition">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="p-5 space-y-3">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="font-bold text-slate-900 text-sm leading-snug">3-Bed Family Townhouse near Mount Joy GO</h3>
+                                </div>
+                                <p class="text-xs text-slate-500 line-clamp-2">Spacious 3-level townhouse in top school district (Markville SS). Garage parking + backyard.</p>
+                                
+                                <div class="grid grid-cols-2 gap-2 text-[11px] bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                                    <div>
+                                        <span class="text-slate-400 block">Base Rent</span>
+                                        <span class="font-bold text-slate-800 text-sm">$2750/mo</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-400 block">Est. True Cost</span>
+                                        <span class="font-extrabold text-blue-600 text-sm">$3130/mo</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center space-x-2 text-xs text-slate-600">
+                                    <i class="fa-solid fa-person-walking-luggage text-teal-600"></i>
+                                    <span><strong>6 min walk</strong> to Mount Joy GO Station</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-5 pt-0 flex gap-2">
+                            <button onclick="calcListingFit(2750)" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-2 rounded-xl transition">
+                                Test in Calculator
+                            </button>
+                        </div>
+                    </div>
+                
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <div class="relative h-44 bg-slate-100 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Affordable Room in Shared House near Milliken GO" class="w-full h-full object-cover">
+                                <div class="absolute top-3 left-3 flex gap-2">
+                                    <span class="bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Milliken</span>
+                                    <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">25.2% Income Fit</span>
+                                </div>
+                                <button onclick="toggleSaveListing('m-105')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-slate-600 hover:text-red-500 shadow-sm transition">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="p-5 space-y-3">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="font-bold text-slate-900 text-sm leading-snug">Affordable Room in Shared House near Milliken GO</h3>
+                                </div>
+                                <p class="text-xs text-slate-500 line-clamp-2">Perfect for students or newcomers. Direct GO train route south to Union Station (28 min commute).</p>
+                                
+                                <div class="grid grid-cols-2 gap-2 text-[11px] bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                                    <div>
+                                        <span class="text-slate-400 block">Base Rent</span>
+                                        <span class="font-bold text-slate-800 text-sm">$850/mo</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-400 block">Est. True Cost</span>
+                                        <span class="font-extrabold text-blue-600 text-sm">$1060/mo</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center space-x-2 text-xs text-slate-600">
+                                    <i class="fa-solid fa-person-walking-luggage text-teal-600"></i>
+                                    <span><strong>9 min walk</strong> to Milliken GO &amp; Steeles TTC Line</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-5 pt-0 flex gap-2">
+                            <button onclick="calcListingFit(850)" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-2 rounded-xl transition">
+                                Test in Calculator
+                            </button>
+                        </div>
+                    </div>
+                
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <div class="relative h-44 bg-slate-100 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Charming 1-Bed Suite in Historic Unionville" class="w-full h-full object-cover">
+                                <div class="absolute top-3 left-3 flex gap-2">
+                                    <span class="bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Unionville</span>
+                                    <span class="bg-red-100 text-red-800 text-[10px] font-bold px-2 py-0.5 rounded-full">51.9% High Burden</span>
+                                </div>
+                                <button onclick="toggleSaveListing('m-106')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-slate-600 hover:text-red-500 shadow-sm transition">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="p-5 space-y-3">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="font-bold text-slate-900 text-sm leading-snug">Charming 1-Bed Suite in Historic Unionville</h3>
+                                </div>
+                                <p class="text-xs text-slate-500 line-clamp-2">Walkable to Main St cafes, Too Good Pond, and Unionville GO station. All utilities included except wifi.</p>
+                                
+                                <div class="grid grid-cols-2 gap-2 text-[11px] bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                                    <div>
+                                        <span class="text-slate-400 block">Base Rent</span>
+                                        <span class="font-bold text-slate-800 text-sm">$1890/mo</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-400 block">Est. True Cost</span>
+                                        <span class="font-extrabold text-blue-600 text-sm">$2180/mo</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center space-x-2 text-xs text-slate-600">
+                                    <i class="fa-solid fa-person-walking-luggage text-teal-600"></i>
+                                    <span><strong>11 min walk</strong> to Unionville Main St Bus / GO</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-5 pt-0 flex gap-2">
+                            <button onclick="calcListingFit(1890)" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-2 rounded-xl transition">
+                                Test in Calculator
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- TAB 4: GEMINI AI RESOURCE NAVIGATOR -->
+        <!-- ========================================== -->
+        <section id="content-ai-navigator" class="hidden space-y-6">
+            
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-[75vh]">
+                
+                <!-- Chat Header -->
+                <div class="bg-gradient-to-r from-slate-900 via-blue-900 to-purple-900 p-4 text-white flex items-center justify-between shrink-0">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 border border-purple-400/30 flex items-center justify-center overflow-hidden shrink-0">
+                            <i class="fa-solid fa-sparkles text-amber-300 text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base flex items-center space-x-2">
+                                <span>Gemini AI Markham Housing Navigator</span>
+                                <span id="modelBadge" class="bg-purple-500/30 border border-purple-300/30 text-purple-200 text-[10px] px-2 py-0.5 rounded-full font-mono">Gemini 3.5 Flash-Lite</span>
+                            </h3>
+                            <p class="text-xs text-slate-300 mt-2">York Region Housing Subsidies, Tenant Rights (LTB), Rent Assistance &amp; Transit Rules</p>
+                        </div>
+                    </div>
+                    <button onclick="clearChat()" class="text-xs bg-white/10 hover:bg-white/20 text-slate-200 px-3 py-1.5 rounded-lg border border-white/20 transition">
+                        <i class="fa-solid fa-rotate-right mr-1"></i> Reset Chat
+                    </button>
+                </div>
+
+                <!-- Suggested Quick Prompts -->
+                <div class="bg-slate-50 border-b border-slate-200 p-3 overflow-x-auto flex items-center space-x-2 text-xs shrink-0">
+                    <span class="font-bold text-slate-500 self-center whitespace-nowrap shrink-0">Suggested Questions:</span>
+                    <button onclick="sendQuickPrompt('Am I eligible for York Region Rent Assistance Program (RAP)?')" class="bg-white hover:bg-blue-50 text-blue-700 border border-blue-200 px-3 py-1.5 rounded-full whitespace-nowrap transition shrink-0">
+                        💡 York Rent Assistance (RAP)
+                    </button>
+                    <button onclick="sendQuickPrompt('How does Ontario\'s One Fare transit program save me commute money in Markham?')" class="bg-white hover:bg-teal-50 text-teal-700 border border-teal-200 px-3 py-1.5 rounded-full whitespace-nowrap transition shrink-0">
+                        🚂 Transit One Fare Savings
+                    </button>
+                    <button onclick="sendQuickPrompt('What are student legal tenant rights in Markham for rent deposits and key deposits?')" class="bg-white hover:bg-purple-50 text-purple-700 border border-purple-200 px-3 py-1.5 rounded-full whitespace-nowrap transition shrink-0">
+                        📜 Student Tenant Legal Rights
+                    </button>
+                    <button onclick="sendQuickPrompt('How do I apply for Housing York Inc. subsidized housing waiting list?')" class="bg-white hover:bg-amber-50 text-amber-700 border border-amber-200 px-3 py-1.5 rounded-full whitespace-nowrap transition shrink-0">
+                        🏡 Housing York Subsidized Application
+                    </button>
+                </div>
+
+                <!-- Chat Messages Scroll Area -->
+                <div id="chatMessages" class="flex-1 flex-grow min-h-0 p-4 sm:p-6 overflow-y-auto space-y-4 bg-slate-50">
+                    <!-- Initial Welcome Message -->
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-xs shrink-0">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm max-w-2xl text-xs sm:text-sm text-slate-800 space-y-2">
+                            <p class="font-bold text-purple-900">Hello! I am your Gemini AI Markham Housing Assistant.</p>
+                            <p class="leading-relaxed">
+                                I am pre-loaded with official details on **York Region Housing Access (Housing York Inc.)**, the **Rent Assistance Program (RAP)**, **Ontario Residential Tenancies Act (RTA)** guidelines, student co-housing standards, and **YRT / GO Transit co-fare subsidies**.
+                            </p>
+                            <p class="text-slate-500 italic text-xs">
+                                How can I help you make housing more affordable and accessible today?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Box Bar -->
+                <div class="p-4 bg-white border-t border-slate-200 shrink-0">
+                    <form id="chatForm" onsubmit="handleChatSubmit(event)" class="flex space-x-2">
+                        <input type="text" id="chatInput" placeholder="Ask about Markham subsidies, tenant rights, rent caps, or commute savings..." class="flex-grow p-3 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none" required="">
+                        <button type="submit" id="chatSubmitBtn" class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold px-5 py-3 rounded-xl shadow-md transition flex items-center space-x-2 shrink-0 text-xs sm:text-sm">
+                            <span>Send</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs border-t border-slate-800 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-city text-blue-500 text-base"></i>
+                <span class="font-bold text-white">HabitatIQ Markham</span>
+                <span>• Google Hackathon Demo Prototype</span>
+            </div>
+            <div class="flex space-x-4">
+                <span>York Region Housing Data</span>
+                <span>•</span>
+                <span>Metrolinx Transit Fares</span>
+                <span>•</span>
+                <span>Ontario LTB Guidelines</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Income Edit Modal -->
+    <div id="incomeModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden">
+        <div class="bg-white p-6 rounded-2xl max-w-md w-full mx-4 shadow-2xl space-y-4 border border-slate-200">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                <h3 class="font-bold text-slate-900 text-base">Configure Monthly Income</h3>
+                <button onclick="closeIncomeModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <p class="text-xs text-slate-600">
+                Update your monthly net (after tax) household or individual income. This updates all affordability gauges and listing dynamic True-Cost scores.
+            </p>
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Monthly Take-Home Pay ($)</label>
+                <input type="number" id="modalIncomeInput" value="4200" step="100" class="w-full p-2.5 border border-slate-300 rounded-lg text-base font-bold text-slate-900 focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="flex space-x-2 pt-2">
+                <button onclick="saveModalIncome()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl text-xs transition">Save &amp; Apply Across App</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Banner Container -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-xl flex items-center space-x-2 border border-slate-700 transition-all transform translate-y-20 opacity-0 pointer-events-none">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toastMsg">Action completed successfully</span>
+    </div>
+
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Global User Profile & Application State
+        const state = {
+            monthlyIncome: 4200,
+            destination: 'union',
+            transitMode: 'go_yrt',
+            housingType: 'condo_1b',
+            neighborhood: 'downtown_markham',
+            subsidySavings: 120,
+            savedListings: new Set()
+        };
+
+        // Markham Neighborhood Data Dictionary
+        const neighborhoodData = {
+            downtown_markham: {
+                name: 'Downtown Markham',
+                baseRent1Bed: 2150,
+                goStation: 'Unionville GO',
+                walkToGo: 8, // mins
+                yrtCost: 0, // covered via one fare
+                goMonthlyFareToUnion: 210,
+                goMonthlyFareToYorkKeele: 180,
+                goMonthlyFareToYorkMarkham: 0, // walk distance
+                drivingGasParkingUnion: 580,
+                utilitiesEst: 160,
+                score: 92
+            },
+            unionville: {
+                name: 'Unionville',
+                baseRent1Bed: 2100,
+                goStation: 'Unionville GO',
+                walkToGo: 12,
+                goMonthlyFareToUnion: 210,
+                goMonthlyFareToYorkKeele: 180,
+                goMonthlyFareToYorkMarkham: 60,
+                drivingGasParkingUnion: 560,
+                utilitiesEst: 155,
+                score: 89
+            },
+            cornell: {
+                name: 'Cornell',
+                baseRent1Bed: 1850,
+                goStation: 'Mount Joy GO / Markham GO',
+                walkToGo: 22,
+                goMonthlyFareToUnion: 240,
+                goMonthlyFareToYorkKeele: 210,
+                goMonthlyFareToYorkMarkham: 90,
+                drivingGasParkingUnion: 640,
+                utilitiesEst: 170,
+                score: 82
+            },
+            milliken: {
+                name: 'Milliken',
+                baseRent1Bed: 1750,
+                goStation: 'Milliken GO',
+                walkToGo: 10,
+                goMonthlyFareToUnion: 185,
+                goMonthlyFareToYorkKeele: 170,
+                goMonthlyFareToYorkMarkham: 80,
+                drivingGasParkingUnion: 510,
+                utilitiesEst: 150,
+                score: 86
+            },
+            thornhill: {
+                name: 'Thornhill',
+                baseRent1Bed: 1950,
+                goStation: 'Finch Subw Connection / Langstaff GO',
+                walkToGo: 15,
+                goMonthlyFareToUnion: 195,
+                goMonthlyFareToYorkKeele: 140,
+                goMonthlyFareToYorkMarkham: 100,
+                drivingGasParkingUnion: 520,
+                utilitiesEst: 165,
+                score: 88
+            },
+            markham_village: {
+                name: 'Markham Village',
+                baseRent1Bed: 1900,
+                goStation: 'Markham GO',
+                walkToGo: 7,
+                goMonthlyFareToUnion: 225,
+                goMonthlyFareToYorkKeele: 195,
+                goMonthlyFareToYorkMarkham: 70,
+                drivingGasParkingUnion: 590,
+                utilitiesEst: 160,
+                score: 85
+            }
+        };
+
+        // Mock Markham Listings Database
+        const rawListings = [
+            {
+                id: 'm-101',
+                title: 'Modern Student Co-Living Suite near York U Markham',
+                neighborhood: 'Downtown Markham',
+                neighborhoodKey: 'downtown_markham',
+                rent: 950,
+                roomType: 'shared',
+                suitability: 'student',
+                walkToGoMin: 5,
+                nearestTransit: 'Unionville GO & VIVA Next BRT',
+                utilitiesEst: 60,
+                image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80',
+                description: 'Private furnished room in high-rise condo. High-speed fiber internet included. Walk to new York U Markham Campus.'
+            },
+            {
+                id: 'm-102',
+                title: 'Bright 1-Bed Condo at Enterprise Blvd',
+                neighborhood: 'Downtown Markham',
+                neighborhoodKey: 'downtown_markham',
+                rent: 2050,
+                roomType: 'condo',
+                suitability: 'tech',
+                walkToGoMin: 7,
+                nearestTransit: 'Unionville GO / Hwy 7 Busway',
+                utilitiesEst: 150,
+                image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80',
+                description: 'Includes underground parking and storage locker. Minutes to IBM, AMD, and tech head offices.'
+            },
+            {
+                id: 'm-103',
+                title: '2-Bedroom Sunlit Basement Suite in Cornell',
+                neighborhood: 'Cornell',
+                neighborhoodKey: 'cornell',
+                rent: 1650,
+                roomType: 'basement',
+                suitability: 'family',
+                walkToGoMin: 18,
+                nearestTransit: 'YRT Cornell Terminal Bus #1',
+                utilitiesEst: 140,
+                image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80',
+                description: 'Legal egress windows, separate side entrance, private washer/dryer. Close to Markham Stouffville Hospital.'
+            },
+            {
+                id: 'm-104',
+                title: '3-Bed Family Townhouse near Mount Joy GO',
+                neighborhood: 'Markham Village',
+                neighborhoodKey: 'markham_village',
+                rent: 2750,
+                roomType: 'townhouse',
+                suitability: 'family',
+                walkToGoMin: 6,
+                nearestTransit: 'Mount Joy GO Station',
+                utilitiesEst: 220,
+                image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80',
+                description: 'Spacious 3-level townhouse in top school district (Markville SS). Garage parking + backyard.'
+            },
+            {
+                id: 'm-105',
+                title: 'Affordable Room in Shared House near Milliken GO',
+                neighborhood: 'Milliken',
+                neighborhoodKey: 'milliken',
+                rent: 850,
+                roomType: 'shared',
+                suitability: 'student',
+                walkToGoMin: 9,
+                nearestTransit: 'Milliken GO & Steeles TTC Line',
+                utilitiesEst: 50,
+                image: 'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=600&q=80',
+                description: 'Perfect for students or newcomers. Direct GO train route south to Union Station (28 min commute).'
+            },
+            {
+                id: 'm-106',
+                title: 'Charming 1-Bed Suite in Historic Unionville',
+                neighborhood: 'Unionville',
+                neighborhoodKey: 'unionville',
+                rent: 1890,
+                roomType: 'basement',
+                suitability: 'tech',
+                walkToGoMin: 11,
+                nearestTransit: 'Unionville Main St Bus / GO',
+                utilitiesEst: 130,
+                image: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=600&q=80',
+                description: 'Walkable to Main St cafes, Too Good Pond, and Unionville GO station. All utilities included except wifi.'
+            }
+        ];
+
+        // Global Chart instances
+        let neighborhoodChartInstance = null;
+        let burdenChartInstance = null;
+
+        // On DOM Loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            initCharts();
+            syncThemeUI();
+            runCalculator();
+            renderListings();
+            updateHeaderIncomeDisplay();
+        });
+
+        // Dark Mode Theme Controller
+        function toggleDarkMode() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('habitatiq_theme', isDark ? 'dark' : 'light');
+            syncThemeUI();
+            showToast(isDark ? 'Dark mode enabled' : 'Light mode enabled');
+        }
+
+        function syncThemeUI() {
+            const isDark = document.documentElement.classList.contains('dark');
+            const icon = document.getElementById('themeToggleIcon');
+            if (icon) {
+                icon.className = isDark
+                    ? 'fa-solid fa-sun text-amber-400 text-sm'
+                    : 'fa-solid fa-moon text-sm';
+            }
+            updateChartsTheme();
+        }
+
+        function updateChartsTheme() {
+            const isDark = document.documentElement.classList.contains('dark');
+            const legendColor = isDark ? '#cbd5e1' : '#475569';
+            const tickColor = isDark ? '#94a3b8' : '#64748b';
+            const gridColor = isDark ? '#334155' : '#f1f5f9';
+
+            if (neighborhoodChartInstance) {
+                neighborhoodChartInstance.options.plugins.legend.labels.color = legendColor;
+                neighborhoodChartInstance.options.scales.x.ticks = {
+                    ...neighborhoodChartInstance.options.scales.x.ticks,
+                    color: tickColor
+                };
+                neighborhoodChartInstance.options.scales.y.ticks = {
+                    ...neighborhoodChartInstance.options.scales.y.ticks,
+                    color: tickColor
+                };
+                neighborhoodChartInstance.options.scales.y.grid.color = gridColor;
+                neighborhoodChartInstance.update();
+            }
+
+            if (burdenChartInstance) {
+                burdenChartInstance.options.plugins.legend.labels.color = legendColor;
+                burdenChartInstance.data.datasets[0].borderColor = isDark ? '#1e293b' : '#ffffff';
+                burdenChartInstance.update();
+            }
+        }
+
+        // Tab Switcher
+        function switchTab(tabId) {
+            const tabs = ['dashboard', 'calculator', 'discovery', 'ai-navigator'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tab-${t}`);
+                const content = document.getElementById(`content-${t}`);
+                if (t === tabId) {
+                    btn.classList.add('active');
+                    content.classList.remove('hidden');
+                } else {
+                    btn.classList.remove('active');
+                    content.classList.add('hidden');
+                }
+            });
+        }
+
+        // Modal Handlers
+        function openIncomeModal() {
+            document.getElementById('modalIncomeInput').value = state.monthlyIncome;
+            document.getElementById('incomeModal').classList.remove('hidden');
+        }
+        function closeIncomeModal() {
+            document.getElementById('incomeModal').classList.add('hidden');
+        }
+        function saveModalIncome() {
+            const val = parseFloat(document.getElementById('modalIncomeInput').value) || 4200;
+            state.monthlyIncome = val;
+            document.getElementById('calcIncomeInput').value = val;
+            updateHeaderIncomeDisplay();
+            closeIncomeModal();
+            runCalculator();
+            renderListings();
+            showToast('Updated monthly income across application');
+        }
+        function updateHeaderIncomeDisplay() {
+            document.getElementById('headerIncomeDisplay').innerText = `$${state.monthlyIncome.toLocaleString()}`;
+        }
+
+        // Quick Scenario Presets
+        function setScenario(type) {
+            if (type === 'student') {
+                state.monthlyIncome = 2400;
+                document.getElementById('calcDestination').value = 'york_markham';
+                document.getElementById('calcTransitMode').value = 'go_yrt';
+                document.getElementById('calcHousingType').value = 'shared';
+                document.getElementById('calcNeighborhood').value = 'downtown_markham';
+            } else if (type === 'tech') {
+                state.monthlyIncome = 5800;
+                document.getElementById('calcDestination').value = 'union';
+                document.getElementById('calcTransitMode').value = 'go_yrt';
+                document.getElementById('calcHousingType').value = 'condo_1b';
+                document.getElementById('calcNeighborhood').value = 'downtown_markham';
+            } else if (type === 'family') {
+                state.monthlyIncome = 6500;
+                document.getElementById('calcDestination').value = 'markham_tech';
+                document.getElementById('calcTransitMode').value = 'driving';
+                document.getElementById('calcHousingType').value = 'townhouse_2b';
+                document.getElementById('calcNeighborhood').value = 'cornell';
+            }
+            document.getElementById('calcIncomeInput').value = state.monthlyIncome;
+            updateHeaderIncomeDisplay();
+            runCalculator();
+            showToast(`Loaded ${type.toUpperCase()} preset scenario`);
+        }
+
+        // Dynamic Rent & Commute Calculator Engine
+        function runCalculator() {
+            const income = parseFloat(document.getElementById('calcIncomeInput').value) || 4200;
+            state.monthlyIncome = income;
+            updateHeaderIncomeDisplay();
+
+            const dest = document.getElementById('calcDestination').value;
+            const mode = document.getElementById('calcTransitMode').value;
+            const hType = document.getElementById('calcHousingType').value;
+            const neighKey = document.getElementById('calcNeighborhood').value;
+
+            state.destination = dest;
+            state.transitMode = mode;
+            state.housingType = hType;
+            state.neighborhood = neighKey;
+
+            const nData = neighborhoodData[neighKey];
+
+            // Base Rent estimation by Housing Type
+            let baseRent = nData.baseRent1Bed;
+            if (hType === 'shared') baseRent = Math.round(nData.baseRent1Bed * 0.45);
+            else if (hType === 'basement') baseRent = Math.round(nData.baseRent1Bed * 0.80);
+            else if (hType === 'townhouse_2b') baseRent = Math.round(nData.baseRent1Bed * 1.35);
+
+            // Calculate Commute Costs based on mode and destination
+            let commuteCost = 0;
+            let commuteText = 'GO + YRT One Fare';
+
+            if (mode === 'go_yrt') {
+                if (dest === 'union') commuteCost = nData.goMonthlyFareToUnion - state.subsidySavings;
+                else if (dest.startsWith('york')) commuteCost = nData.goMonthlyFareToYorkKeele - state.subsidySavings;
+                else commuteCost = 80; // Local YRT
+                commuteCost = Math.max(commuteCost, 40);
+                commuteText = 'GO Transit + Free YRT Transfer';
+            } else if (mode === 'yrt_only') {
+                commuteCost = 138; // PRESTO Adult Monthly Pass
+                commuteText = 'YRT/VIVA Bus Pass';
+            } else if (mode === 'driving') {
+                commuteCost = (dest === 'union') ? nData.drivingGasParkingUnion : 380;
+                commuteText = 'Gas + Insurance + Parking';
+            } else {
+                commuteCost = 25; // Bike maintenance
+                commuteText = 'Active Transportation';
+            }
+
+            const utilities = nData.utilitiesEst;
+            const totalTrueCost = baseRent + commuteCost + utilities;
+            const burdenRatio = ((totalTrueCost / income) * 100).toFixed(1);
+
+            // Update UI Displays
+            document.getElementById('calcBaseRent').innerText = `$${baseRent.toLocaleString()}`;
+            document.getElementById('calcCommuteCost').innerText = `$${commuteCost.toLocaleString()}`;
+            document.getElementById('calcCommuteDetail').innerText = commuteText;
+            document.getElementById('calcUtilities').innerText = `$${utilities.toLocaleString()}`;
+            document.getElementById('calcTotalTrueCost').innerText = `$${totalTrueCost.toLocaleString()}`;
+            document.getElementById('ratioDisplay').innerText = `${burdenRatio}%`;
+            document.getElementById('incomeValText').innerText = income.toLocaleString();
+            document.getElementById('safeThresholdText').innerText = Math.round(income * 0.3).toLocaleString();
+
+            // Progress bar widths
+            const rentPct = Math.min((baseRent / income) * 100, 100);
+            const transitPct = Math.min((commuteCost / income) * 100, 100);
+            const utilPct = Math.min((utilities / income) * 100, 100);
+
+            document.getElementById('barRent').style.width = `${rentPct}%`;
+            document.getElementById('barTransit').style.width = `${transitPct}%`;
+            document.getElementById('barUtilities').style.width = `${utilPct}%`;
+
+            // Affordability Card Styling & Warning
+            const affCard = document.getElementById('affordabilityCard');
+            const affBadge = document.getElementById('affordabilityBadge');
+            const affHead = document.getElementById('affordabilityHeadline');
+            const affSub = document.getElementById('affordabilitySubtext');
+            const ratioDisp = document.getElementById('ratioDisplay');
+
+            if (burdenRatio <= 30) {
+                affCard.className = "p-6 rounded-2xl border transition-all duration-300 bg-emerald-50 border-emerald-200";
+                affBadge.className = "px-2.5 py-1 bg-emerald-600 text-white text-xs font-extrabold rounded-md uppercase tracking-wide";
+                affBadge.innerText = "Affordable (<30%)";
+                affHead.innerText = "Housing fits comfortably in your budget!";
+                affSub.innerText = "Your true combined housing outflow is below the recommended 30% thresholds.";
+                ratioDisp.className = "text-3xl font-extrabold text-emerald-600";
+            } else if (burdenRatio <= 50) {
+                affCard.className = "p-6 rounded-2xl border transition-all duration-300 bg-amber-50 border-amber-200";
+                affBadge.className = "px-2.5 py-1 bg-amber-600 text-white text-xs font-extrabold rounded-md uppercase tracking-wide";
+                affBadge.innerText = "Moderate Stress (30%-50%)";
+                affHead.innerText = "Caution: Housing takes a significant share of income.";
+                affSub.innerText = "You are spending above 30% on shelter and transit combined. Consider room-sharing or transit subsidies.";
+                ratioDisp.className = "text-3xl font-extrabold text-amber-600";
+            } else {
+                affCard.className = "p-6 rounded-2xl border transition-all duration-300 bg-red-50 border-red-200";
+                affBadge.className = "px-2.5 py-1 bg-red-600 text-white text-xs font-extrabold rounded-md uppercase tracking-wide";
+                affBadge.innerText = "Severe Burden (>50%)";
+                affHead.innerText = "Warning: Severe housing cost burden detected!";
+                affSub.innerText = "Spending >50% of your paycheck leaves insufficient funds for groceries, healthcare, and savings.";
+                ratioDisp.className = "text-3xl font-extrabold text-red-600";
+            }
+
+            // Populate Comparative Matrix Table
+            renderNeighborhoodMatrix(income, dest, hType);
+
+            // Update Dashboard Household Status Pie Chart
+            updateBurdenChart();
+        }
+
+        // Update Markham Market Affordability Doughnut Chart based on Monthly Income & Fare Subsidy
+        function updateBurdenChart() {
+            if (!burdenChartInstance) return;
+
+            const income = state.monthlyIncome || 4200;
+            const subsidy = state.subsidySavings || 0;
+
+            // Effective monthly income power factoring in commute subsidy (calibrated to Markham baseline at $4,200 income & $120 subsidy)
+            const effectiveIncome = income + (subsidy - 120) * 3.5;
+
+            const affordableRaw = 100 / (1 + Math.exp(-(effectiveIncome - 3505.4) / 1000));
+            const nonSevereRaw = 100 / (1 + Math.exp(-(effectiveIncome - 2717.2) / 1000));
+
+            const affordable = parseFloat(affordableRaw.toFixed(1));
+            const severe = parseFloat((100 - nonSevereRaw).toFixed(1));
+            const moderate = parseFloat(Math.max(0, 100 - affordable - severe).toFixed(1));
+
+            burdenChartInstance.data.datasets[0].data = [affordable, moderate, severe];
+            burdenChartInstance.update();
+        }
+
+        // Render Matrix Table comparing all neighborhoods
+        function renderNeighborhoodMatrix(income, dest, hType) {
+            const tbody = document.getElementById('matrixTableBody');
+            const destLabelMap = {
+                union: 'Union Station',
+                york_keele: 'York U Keele',
+                york_markham: 'York U Markham',
+                markham_tech: 'Markham Tech Hub',
+                seneca: 'Seneca Polytechnic'
+            };
+            document.getElementById('matrixTargetText').innerText = destLabelMap[dest] || dest;
+
+            let html = '';
+            Object.keys(neighborhoodData).forEach(key => {
+                const item = neighborhoodData[key];
+                let rent = item.baseRent1Bed;
+                if (hType === 'shared') rent = Math.round(rent * 0.45);
+                else if (hType === 'basement') rent = Math.round(rent * 0.80);
+                else if (hType === 'townhouse_2b') rent = Math.round(rent * 1.35);
+
+                const fare = (dest === 'union') ? item.goMonthlyFareToUnion : 140;
+                const trueCost = rent + fare + item.utilitiesEst;
+                const pct = ((trueCost / income) * 100).toFixed(1);
+
+                let badge = `<span class="bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">Comfortable</span>`;
+                if (pct > 50) badge = `<span class="bg-red-100 text-red-800 font-bold px-2 py-0.5 rounded">Severe Burden</span>`;
+                else if (pct > 30) badge = `<span class="bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded">Moderate</span>`;
+
+                html += `
+                    <tr class="hover:bg-slate-50">
+                        <td class="p-3 font-bold text-slate-900">${item.name}</td>
+                        <td class="p-3">$${rent.toLocaleString()}</td>
+                        <td class="p-3 text-teal-600 font-semibold">$${fare}</td>
+                        <td class="p-3 font-extrabold text-blue-700">$${trueCost.toLocaleString()}</td>
+                        <td class="p-3 font-bold">${pct}%</td>
+                        <td class="p-3">${badge}</td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        }
+
+        // Policy Simulator Slider Update
+        function updateSubsidySim(val) {
+            state.subsidySavings = parseInt(val);
+            document.getElementById('subsidyValDisplay').innerText = `$${val}/mo Savings`;
+            runCalculator();
+        }
+
+        // Render Housing Listings in Discovery Tab
+        function renderListings() {
+            const grid = document.getElementById('listingsGrid');
+            const maxBudget = parseFloat(document.getElementById('filterMaxBudget').value);
+            const roomType = document.getElementById('filterRoomType').value;
+            const transitWalk = parseInt(document.getElementById('filterTransitWalk').value);
+            const suitability = document.getElementById('filterSuitability').value;
+
+            const filtered = rawListings.filter(item => {
+                if (item.rent > maxBudget) return false;
+                if (roomType !== 'all' && item.roomType !== roomType) return false;
+                if (item.walkToGoMin > transitWalk) return false;
+                if (suitability !== 'all' && item.suitability !== suitability) return false;
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full bg-white p-8 rounded-2xl border border-slate-200 text-center space-y-3">
+                        <i class="fa-solid fa-house-circle-xmark text-slate-300 text-4xl"></i>
+                        <h4 class="font-bold text-slate-800">No matching housing units found</h4>
+                        <p class="text-xs text-slate-500">Try relaxing your filter parameters or max rent threshold.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            filtered.forEach(item => {
+                const isSaved = state.savedListings.has(item.id);
+                
+                // Calculate dynamic true living cost against current user profile
+                const trueLivingCost = item.rent + item.utilitiesEst + 160; // 160 avg transit
+                const fitRatio = ((trueLivingCost / state.monthlyIncome) * 100).toFixed(1);
+
+                let fitTag = `<span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">${fitRatio}% Income Fit</span>`;
+                if (fitRatio > 50) fitTag = `<span class="bg-red-100 text-red-800 text-[10px] font-bold px-2 py-0.5 rounded-full">${fitRatio}% High Burden</span>`;
+
+                html += `
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <div class="relative h-44 bg-slate-100 overflow-hidden">
+                                <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover">
+                                <div class="absolute top-3 left-3 flex gap-2">
+                                    <span class="bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">${item.neighborhood}</span>
+                                    ${fitTag}
+                                </div>
+                                <button onclick="toggleSaveListing('${item.id}')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-slate-600 hover:text-red-500 shadow-sm transition">
+                                    <i class="${isSaved ? 'fa-solid text-red-500' : 'fa-regular'} fa-heart"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="p-5 space-y-3">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="font-bold text-slate-900 text-sm leading-snug">${item.title}</h3>
+                                </div>
+                                <p class="text-xs text-slate-500 line-clamp-2">${item.description}</p>
+                                
+                                <div class="grid grid-cols-2 gap-2 text-[11px] bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                                    <div>
+                                        <span class="text-slate-400 block">Base Rent</span>
+                                        <span class="font-bold text-slate-800 text-sm">$${item.rent}/mo</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-400 block">Est. True Cost</span>
+                                        <span class="font-extrabold text-blue-600 text-sm">$${trueLivingCost}/mo</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center space-x-2 text-xs text-slate-600">
+                                    <i class="fa-solid fa-person-walking-luggage text-teal-600"></i>
+                                    <span><strong>${item.walkToGoMin} min walk</strong> to ${item.nearestTransit}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-5 pt-0 flex gap-2">
+                            <button onclick="calcListingFit(${item.rent})" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-2 rounded-xl transition">
+                                Test in Calculator
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            grid.innerHTML = html;
+        }
+
+        // Toggle Saved Listing
+        function toggleSaveListing(id) {
+            if (state.savedListings.has(id)) {
+                state.savedListings.delete(id);
+                showToast('Removed unit from saved items');
+            } else {
+                state.savedListings.add(id);
+                showToast('Saved unit to favorites');
+            }
+            document.getElementById('savedCountBadge').innerText = `${state.savedListings.size} Items`;
+            renderListings();
+        }
+
+        function calcListingFit(rent) {
+            switchTab('calculator');
+            showToast(`Testing base rent $${rent} in True-Cost calculator`);
+        }
+
+        // Gemini AI Navigator Chat System
+        let chatHistory = [];
+
+        async function handleChatSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('chatInput');
+            const prompt = input.value.trim();
+            if (!prompt) return;
+
+            // Append User Message
+            appendChatMessage('user', prompt);
+            input.value = '';
+
+            // Loading indicator
+            const loadingId = appendChatLoading();
+
+            try {
+                // Construct Gemini API Payload with system knowledge
+                const systemPrompt = `You are the HabitatIQ AI Assistant for Markham, Ontario. 
+You specialize in housing accessibility, tenant rights, and transit affordability for students, families, and young professionals.
+Knowledge Context:
+- Markham Housing Crisis: 1 in 3 households face affordability issues; 1 in 5 spend >50% income on rent.
+- Housing York Inc.: York Region's subsidized housing provider. Waiting lists apply.
+- Rent Assistance Program (RAP): Provides monthly rent subsidies for low-income York Region households.
+- Ontario Residential Tenancies Act (RTA): Rent increase caps (2.5% guidelines), standard lease requirement, no damage deposits allowed (only key deposit at replacement cost and last month rent).
+- Ontario One Fare Program: Transfers between YRT bus and GO Transit or TTC are FREE (full fare credit applied on PRESTO card).
+- York University Markham Campus & Seneca Polytechnic student housing guidance.
+Be concise, helpful, clear, and structured with bullet points.`;
+
+                const nextHistory = [
+                    ...chatHistory,
+                    { role: 'user', parts: [{ text: prompt }] }
+                ];
+
+                const payload = {
+                    contents: nextHistory,
+                    systemInstruction: { parts: [{ text: systemPrompt }] }
+                };
+
+                const apiBase = (
+                    window.location.protocol === 'file:' ||
+                    ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '3000')
+                ) ? 'http://localhost:3000' : '';
+
+                const response = await fetch(`${apiBase}/api/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                removeChatMessage(loadingId);
+
+                if (!response.ok) {
+                    const errText = await response.text();
+                    console.error('Gemini API Error:', response.status, errText);
+                    throw new Error('API Request Failed');
+                }
+
+                const result = await response.json();
+                const parts = result.candidates?.[0]?.content?.parts || [];
+                const answerParts = parts.filter(p => !p.thought && p.text);
+                const replyText = (answerParts.length > 0
+                    ? answerParts.map(p => p.text).join('\n')
+                    : parts[parts.length - 1]?.text) || generateFallbackResponse(prompt);
+
+                chatHistory = [
+                    ...nextHistory,
+                    { role: 'model', parts: [{ text: replyText }] }
+                ];
+
+                appendChatMessage('model', replyText);
+
+            } catch (err) {
+                console.error('Chat error, using fallback:', err);
+                removeChatMessage(loadingId);
+                // Robust Fallback System if API key is blank or offline
+                const fallbackReply = generateFallbackResponse(prompt);
+                appendChatMessage('model', fallbackReply);
+            }
+        }
+
+        function sendQuickPrompt(text) {
+            document.getElementById('chatInput').value = text;
+            handleChatSubmit(new Event('submit'));
+        }
+
+        function appendChatMessage(role, text) {
+            const container = document.getElementById('chatMessages');
+            const isUser = role === 'user';
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `flex items-start space-x-3 ${isUser ? 'flex-row-reverse space-x-reverse' : ''}`;
+
+            const formattedText = text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+            messageDiv.innerHTML = `
+                <div class="w-8 h-8 rounded-full ${isUser ? 'bg-blue-600' : 'bg-purple-600'} text-white flex items-center justify-center font-bold text-xs shrink-0">
+                    <i class="fa-solid ${isUser ? 'fa-user' : 'fa-robot'}"></i>
+                </div>
+                <div class="${isUser ? 'bg-blue-600 text-white' : 'bg-white text-slate-800 border border-slate-200'} rounded-2xl p-4 shadow-sm max-w-2xl text-xs sm:text-sm leading-relaxed">
+                    ${formattedText}
+                </div>
+            `;
+            container.appendChild(messageDiv);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function appendChatLoading() {
+            const container = document.getElementById('chatMessages');
+            const id = 'loading-' + Date.now();
+            const messageDiv = document.createElement('div');
+            messageDiv.id = id;
+            messageDiv.className = 'flex items-start space-x-3';
+            messageDiv.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-xs shrink-0">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm text-xs text-slate-500 flex items-center space-x-2">
+                    <i class="fa-solid fa-circle-notch fa-spin text-purple-600"></i>
+                    <span>Consulting Gemini Markham Housing Knowledge Base...</span>
+                </div>
+            `;
+            container.appendChild(messageDiv);
+            container.scrollTop = container.scrollHeight;
+            return id;
+        }
+
+        function removeChatMessage(id) {
+            const el = document.getElementById(id);
+            if (el) el.remove();
+        }
+
+        function clearChat() {
+            chatHistory = [];
+            document.getElementById('chatMessages').innerHTML = '';
+            appendChatMessage('model', 'Chat reset. How can I assist you with Markham housing and transit options?');
+        }
+
+        // Domain-Aware Local Knowledge Fallback Engine
+        function generateFallbackResponse(query) {
+            const q = query.toLowerCase();
+            if (q.includes('rap') || q.includes('rent assistance') || q.includes('subsidy')) {
+                return `**York Region Rent Assistance Program (RAP):**\n\n• **What it is:** A direct financial subsidy paid directly to eligible low-income renters in Markham and York Region to make housing affordable.\n• **Eligibility:** Must live in York Region, pay more than 30% of income towards rent, and meet gross household income caps.\n• **How to Apply:** Applications are administered through **Housing York Inc.** via the York Region Access Centre (1-877-464-9675).\n• **HabitatIQ Tip:** Combine RAP subsidies with Ontario One Fare transit passes to reduce true living outflow by up to $350/mo!`;
+            } else if (q.includes('one fare') || q.includes('transit') || q.includes('commute')) {
+                return `**Ontario One Fare Transit Savings in Markham:**\n\n• **Automatic Fare Credit:** When transferring between **YRT (York Region Transit)** and **GO Transit**, your YRT bus connection is **100% FREE**.\n• **How to use:** Simply tap with the same PRESTO card, credit card, or debit card within 2 hours.\n• **Monthly Savings:** Saves average Markham commuters between **$120 and $160 per month** in double transit fares!\n• **York U Markham:** Students traveling from Keele Campus or Toronto receive full transfer discounts.`;
+            } else if (q.includes('rights') || q.includes('tenant') || q.includes('deposit') || q.includes('legal')) {
+                return `**Ontario Tenant Rights in Markham (Landlord & Tenant Board):**\n\n1. **Deposits:** Landlords can **ONLY** request first and last month's rent. Damage deposits or pet deposits are **ILLEGAL** in Ontario.\n2. **Key Deposits:** Allowed only for actual key replacement cost (refundable).\n3. **Rent Increase Cap:** Guideline rent increase for 2026 is capped (typically ~2.5% for units occupied before Nov 15, 2018).\n4. **Standard Lease:** Landlords must use the official *Ontario Standard Lease Form*.`;
+            } else {
+                return `**Markham Housing Resource Insights:**\n\n• **York Region Subsidized Housing:** Administered by Housing York Inc. Priority is provided to families, seniors, and individuals experiencing severe housing burden.\n• **Student Co-Living:** Downtown Markham and Unionville offer accessible shared options within walking distance of GO Transit and VIVA busways.\n• **Need specific assistance?** Ask me about **Rent Assistance (RAP)**, **GO Transit discounts**, or **Tenant Legal Protections**!`;
+            }
+        }
+
+        // Initialize Visual Analytics Charts (Chart.js)
+        function initCharts() {
+            // Neighborhood True-Cost Stacked Bar Chart
+            const ctx1 = document.getElementById('neighborhoodChart').getContext('2d');
+            neighborhoodChartInstance = new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: ['Downtown Markham', 'Unionville', 'Cornell', 'Milliken', 'Thornhill', 'Markham Village'],
+                    datasets: [
+                        {
+                            label: 'Base 1-Bed Rent ($)',
+                            data: [2150, 2100, 1850, 1750, 1950, 1900],
+                            backgroundColor: '#1a73e8',
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'Commute Cost to Union ($)',
+                            data: [210, 210, 240, 185, 195, 225],
+                            backgroundColor: '#20b2aa',
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'Utilities ($)',
+                            data: [160, 155, 170, 150, 165, 160],
+                            backgroundColor: '#6366f1',
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { font: { size: 11, family: 'Inter' } } },
+                        tooltip: { mode: 'index', intersect: false }
+                    },
+                    scales: {
+                        x: { stacked: true, grid: { display: false } },
+                        y: { stacked: true, grid: { color: '#f1f5f9' }, ticks: { callback: v => '$' + v } }
+                    }
+                }
+            });
+
+            // Housing Burden Doughnut Chart
+            const ctx2 = document.getElementById('burdenChart').getContext('2d');
+            burdenChartInstance = new Chart(ctx2, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Affordable (<30%)', 'Moderate Strain (30-50%)', 'Severe Burden (>50%)'],
+                    datasets: [{
+                        data: [66.7, 14.8, 18.5],
+                        backgroundColor: ['#34a853', '#fbbc04', '#ea4335'],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { font: { size: 10, family: 'Inter' } } },
+                        tooltip: {
+                            callbacks: {
+                                label: ctx => ` ${ctx.parsed}%`
+                            }
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
+        }
+
+        // Toast Notification Function
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = message;
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+    </script>
+
+</body></html>
