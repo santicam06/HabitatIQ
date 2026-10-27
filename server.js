@@ -29,14 +29,7 @@ http.createServer(async (req, res) => {
         return res.end();
     }
 
-    // 1. Return non-secret model name for UI badge
-    if (req.method === 'GET' && req.url === '/api/model') {
-        dotenv.config({ path: path.resolve(__dirname, ".env"), override: true });
-        res.writeHead(200, { ...corsHeaders, 'Content-Type': 'application/json' });
-        return res.end(JSON.stringify({ model: process.env.GEMINI_MODEL || '' }));
-    }
-
-    // 2. Proxy chat endpoint (keeps API key strictly on the server)
+    // Proxy chat endpoint (keeps API key strictly on the server)
     if (req.method === 'POST' && req.url === '/api/chat') {
         let body = '';
         req.on('data', chunk => { body += chunk; });
