@@ -321,6 +321,9 @@
         html.dark input::placeholder {
             color: #64748b;
         }
+        html.dark footer.bg-white {
+            background-color: #0f172a;
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen transition-colors duration-200">
@@ -1210,19 +1213,23 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 text-xs border-t border-slate-800 py-6 mt-12">
+    <footer class="bg-white text-slate-500 text-xs border-t border-slate-200 py-6 mt-12 transition-colors duration-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center space-x-2">
-                <i class="fa-solid fa-city text-blue-500 text-base"></i>
-                <span class="font-bold text-white">HabitatIQ Markham</span>
+                <i class="fa-solid fa-city text-blue-600 text-base"></i>
+                <span class="font-bold text-slate-900">HabitatIQ Markham</span>
                 <span>• Google Hackathon Demo Prototype</span>
             </div>
-            <div class="flex space-x-4">
+            <div class="flex items-center space-x-4">
                 <span>York Region Housing Data</span>
                 <span>•</span>
                 <span>Metrolinx Transit Fares</span>
                 <span>•</span>
                 <span>Ontario LTB Guidelines</span>
+                <span>•</span>
+                <a href="https://github.com/santicam06/HabitatIQ" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="HabitatIQ GitHub Repository" class="text-slate-700 hover:text-slate-900 transition inline-flex items-center">
+                    <i class="fa-brands fa-github text-lg"></i>
+                </a>
             </div>
         </div>
     </footer>
