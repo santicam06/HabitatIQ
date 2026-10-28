@@ -854,6 +854,7 @@
                             <option value="student">Student Friendly</option>
                             <option value="tech">Young Professional / Tech</option>
                             <option value="family">Family Friendly</option>
+                            <option value="newcomer">Newcomers to Canada</option>
                         </select>
                     </div>
                 </div>
@@ -1380,7 +1381,7 @@
                 neighborhoodKey: 'cornell',
                 rent: 1650,
                 roomType: 'basement',
-                suitability: 'family',
+                suitability: ['family', 'newcomer'],
                 walkToGoMin: 18,
                 nearestTransit: 'YRT Cornell Terminal Bus #1',
                 utilitiesEst: 140,
@@ -1408,7 +1409,7 @@
                 neighborhoodKey: 'milliken',
                 rent: 850,
                 roomType: 'shared',
-                suitability: 'student',
+                suitability: ['student', 'newcomer'],
                 walkToGoMin: 9,
                 nearestTransit: 'Milliken GO & Steeles TTC Line',
                 utilitiesEst: 50,
@@ -1742,7 +1743,10 @@
                 if (item.rent > maxBudget) return false;
                 if (roomType !== 'all' && item.roomType !== roomType) return false;
                 if (item.walkToGoMin > transitWalk) return false;
-                if (suitability !== 'all' && item.suitability !== suitability) return false;
+                const matchesSuitability = Array.isArray(item.suitability)
+                    ? item.suitability.includes(suitability)
+                    : item.suitability === suitability;
+                if (suitability !== 'all' && !matchesSuitability) return false;
                 return true;
             });
 
